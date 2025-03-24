@@ -36,12 +36,12 @@ public class StravaShoeFilter {
         JSONArray activities = new JSONArray(jsonResponse);
         for (int i = 0; i < activities.length(); i++) {
             JSONObject activity = activities.getJSONObject(i);
-            if (activity.has("gear_id")) {
+            if (activity.has("gear_id") && !activity.isNull("gear_id")) {
                 String gearId = activity.getString("gear_id");
                 String gearName = getGearName(gearId);
                 if (gearName.equalsIgnoreCase(shoeName)) {
-                    System.out.println("Activity: " + activity.getString("name") +
-                            ", Date: " + activity.getString("start_date"));
+                    System.out.println("Activity name: " + activity.getString("name") +
+                            ",  Date: " + activity.getString("start_date"));
                 }
             }
         }
