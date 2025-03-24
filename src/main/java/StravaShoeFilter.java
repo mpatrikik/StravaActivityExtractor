@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class StravaShoeFilter {
-    private static final String ACCESS_TOKEN = "f944556962157c2371b38559e0efe74851b6023f";
+    private static final String ACCESS_TOKEN = "f944556962157c2371b38559e0efe74851b6023f"; //it needs to be change every 6 hours
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
 
@@ -16,20 +16,32 @@ public class StravaShoeFilter {
     }
 
     private static String getStravaActivities() throws IOException {
-        URL url = new URL(STRAVA_API_URL);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
-        conn.setRequestProperty("Accept", "application/json");
+        int page = 1;
+        int perPage = 200;
+        StringBuilder fullResponse = new StringBuilder();
 
-        Scanner scanner = new Scanner(conn.getInputStream());
-        StringBuilder response = new StringBuilder();
-        while (scanner.hasNext()) {
-            response.append(scanner.nextLine());
+        while (true) {
+            URL url = new URL(STRAVA_API_URL + "?per_page=" + perPage + "page=" + page);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
+            conn.setRequestProperty("Accept", "application/json");
+
+            Scanner scanner = new Scanner(conn.getInputStream());
+            StringBuilder response = new StringBuilder();
+            while (scanner.hasNext()) {
+                response.append(scanner.nextLine());
+            }
+            scanner.close();
+
+            JSONArray activities = new JSONArray(response.toString());
+            if (activities.length() == 0) {
+                break;
+            }
+            fullResponse.append(response);
+            page++;
         }
-        scanner.close();
-
-        return response.toString();
+        return fullResponse.toString();
     }
 
     private static void filterActivitiesByShoe(String jsonResponse, String shoeName) {
