@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class StravaShoeFilter {
-    private static final String ACCESS_TOKEN = "fcc3ed344ae34b2ce5cc9e08af38afb6d6c71b17";
+    private static final String ACCESS_TOKEN = "f944556962157c2371b38559e0efe74851b6023f";
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
 
@@ -16,9 +16,11 @@ public class StravaShoeFilter {
     }
 
     private static String getStravaActivities() throws IOException {
-        URL url = new URL(STRAVA_API_URL + "?access_token=" + ACCESS_TOKEN);
+        URL url = new URL(STRAVA_API_URL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
+        conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
+        conn.setRequestProperty("Accept", "application/json");
 
         Scanner scanner = new Scanner(conn.getInputStream());
         StringBuilder response = new StringBuilder();
@@ -50,6 +52,8 @@ public class StravaShoeFilter {
             URL url = new URL("https://www.strava.com/api/v3/gear/" + gearId + "?access_token=" + ACCESS_TOKEN);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+            conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
+            conn.setRequestProperty("Accept", "application/json");
 
             Scanner scanner = new Scanner(conn.getInputStream());
             StringBuilder response = new StringBuilder();
