@@ -25,7 +25,6 @@ public class StravaShoeFilter {
         filterActivitiesByShoe(savedActivities, SHOE_NAME);
     }
 
-
     private static JSONArray loadActivitiesFromFile() {
         File file = new File(JSON_FILE);
         if (!file.exists()) {
