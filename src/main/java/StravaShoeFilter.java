@@ -5,7 +5,7 @@ import java.util.*;
 import org.json.*;
 
 public class StravaShoeFilter {
-    private static final String ACCESS_TOKEN = "9c02abb8d3edacc44083291683e9db01b7babbb5"; //it needs to be change every 6 hours
+    private static final String ACCESS_TOKEN = "f50cd2b299ef92aae4435f7bd3b6a345fb389853"; //it needs to be change every 6 hours
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
     private static final String JSON_FILE = "activities.json";
