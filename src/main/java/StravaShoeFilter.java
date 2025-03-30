@@ -5,11 +5,11 @@ import java.util.*;
 import org.json.*;
 
 public class StravaShoeFilter {
-    private static final String ACCESS_TOKEN = "f50cd2b299ef92aae4435f7bd3b6a345fb389853"; //it needs to be used from postman
+    private static final String ACCESS_TOKEN = "f5178e71e5b96e9ee4d17a37bc9b573dddf6c0b1"; //it needs to be used from postman
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
     private static final String JSON_FILE = "src/main/resources/activities.json";
-    private static final int MAX_ACTIVITIES = 70;
+    private static final int MAX_ACTIVITIES = 80;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         JSONArray savedActivities = loadActivitiesFromFile();
@@ -53,9 +53,23 @@ public class StravaShoeFilter {
         }
     }
 
-    private static void saveActivitiesToFile(JSONArray activities) {
+    private static void saveActivitiesToFile(JSONArray newActivities) {
+        JSONArray existingActivities = loadActivitiesFromFile();
+        Set<String> existingNames = new HashSet<>();
+
+        for (int i = 0; i < existingActivities.length(); i++) {
+            existingNames.add(existingActivities.getJSONObject(i).getString("name"));
+        }
+
+        for (int i = 0; i < newActivities.length(); i++) {
+            JSONObject activity = newActivities.getJSONObject(i);
+            if (!existingNames.contains(activity.getString("name"))) {
+                existingActivities.put(activity);
+            }
+        }
+
         try (FileWriter file = new FileWriter(JSON_FILE)) {
-            file.write(activities.toString(2));
+            file.write(existingActivities.toString(2));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,6 +91,13 @@ public class StravaShoeFilter {
     private static JSONArray getNewStravaActivities(String lastSavedDate) throws IOException, InterruptedException {
         int page = 1;
         JSONArray allActivities = new JSONArray();
+        Set<String> existingActivityNames = new HashSet<>();
+
+        JSONArray savedActivities = loadActivitiesFromFile();
+        for (int i = 0; i < savedActivities.length(); i++) {
+            existingActivityNames.add(savedActivities.getJSONObject(i).getString("name"));
+        }
+
         while (true) {
             URL url = new URL(STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -102,11 +123,11 @@ public class StravaShoeFilter {
                 break;
             }
             for (int i = 0; i < activities.length(); i++) {
-                String activityDate = activities.getJSONObject(i).getString("start_date");
-                if (lastSavedDate != null && activityDate.compareTo(lastSavedDate) <= 0) {
-                    return allActivities;
+                JSONObject activity = activities.getJSONObject(i);
+                String activityName = activity.getString("name");
+                if (!existingActivityNames.contains(activityName)) {
+                    allActivities.put(activity);
                 }
-                allActivities.put(activities.getJSONObject(i));
             }
             page++;
             if (page > 5) {
