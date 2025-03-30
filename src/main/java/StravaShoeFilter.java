@@ -12,26 +12,30 @@ public class StravaShoeFilter {
     private static final int MAX_ACTIVITIES = 100;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        JSONArray savedActivities = loadActivitiesFromFile();
-        String lastSavedDate = getLastSavedDate(savedActivities);
-        JSONArray newActivities = getNewStravaActivities(lastSavedDate);
+        while (true) {
+            JSONArray savedActivities = loadActivitiesFromFile();
+            String lastSavedDate = getLastSavedDate(savedActivities);
+            JSONArray newActivities = getNewStravaActivities(lastSavedDate);
 
-        JSONArray filteredActivities = new JSONArray();
-        for (int i = 0; i < newActivities.length(); i++) {
-            JSONObject activity = newActivities.getJSONObject(i);
-            if (activity.has("gear_id") && !activity.isNull("gear_id")) {
-                String gearId = activity.getString("gear_id");
-                String gearName = getGearName(gearId);
-                if (gearName.equalsIgnoreCase(SHOE_NAME)) {
-                    JSONObject filteredActivity = new JSONObject();
-                    filteredActivity.put("name", activity.getString("name"));
-                    filteredActivity.put("start_date", activity.getString("start_date"));
-                    filteredActivity.put("distance", activity.getDouble("distance"));
-                    filteredActivities.put(filteredActivity);
+            JSONArray filteredActivities = new JSONArray();
+            for (int i = 0; i < newActivities.length(); i++) {
+                JSONObject activity = newActivities.getJSONObject(i);
+                if (activity.has("gear_id") && !activity.isNull("gear_id")) {
+                    String gearId = activity.getString("gear_id");
+                    String gearName = getGearName(gearId);
+                    if (gearName.equalsIgnoreCase(SHOE_NAME)) {
+                        JSONObject filteredActivity = new JSONObject();
+                        filteredActivity.put("name", activity.getString("name"));
+                        filteredActivity.put("start_date", activity.getString("start_date"));
+                        filteredActivity.put("distance", activity.getDouble("distance"));
+                        filteredActivities.put(filteredActivity);
+                    }
                 }
             }
+            saveActivitiesToFile(filteredActivities);
+            System.out.println("\n✅ Data updated, waiting 15 minutes...");
+            Thread.sleep(15 * 60 * 1000);
         }
-        saveActivitiesToFile(filteredActivities);
     }
 
     private static JSONArray loadActivitiesFromFile() {
