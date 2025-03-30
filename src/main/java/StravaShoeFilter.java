@@ -9,7 +9,7 @@ public class StravaShoeFilter {
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
     private static final String JSON_FILE = "src/main/resources/activities.json";
-    private static final int MAX_ACTIVITIES = 80;
+    private static final int MAX_ACTIVITIES = 100;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         JSONArray savedActivities = loadActivitiesFromFile();
@@ -106,7 +106,7 @@ public class StravaShoeFilter {
             conn.setRequestProperty("Accept", "application/json");
 
             if (conn.getResponseCode() == 429) {
-                System.out.println("API limit exceeded. Waiting 15 minutes...");
+                System.out.println("\nAPI limit exceeded. Waiting 15 minutes...");
                 Thread.sleep(15 * 60 * 1000);
                 continue;
             }
