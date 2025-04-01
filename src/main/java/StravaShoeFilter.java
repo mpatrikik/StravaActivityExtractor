@@ -1,11 +1,16 @@
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
 import java.util.*;
 import org.json.*;
 
+
 public class StravaShoeFilter {
-    private static final String ACCESS_TOKEN = "f5178e71e5b96e9ee4d17a37bc9b573dddf6c0b1"; //it needs to be used from postman
+    private static final String ACCESS_TOKEN = "1273284f8977594225e51ba53fcf578f79312aef"; //it needs to be used from postman
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
     private static final String JSON_FILE = "src/main/resources/activities.json";
@@ -14,13 +19,16 @@ public class StravaShoeFilter {
     public static void main(String[] args) throws IOException, InterruptedException {
         while (true) {
             JSONArray savedActivities = loadActivitiesFromFile();
-            String lastSavedDate = getLastSavedDate(savedActivities);
-            JSONArray newActivities = getNewStravaActivities(lastSavedDate);
+            long lastSavedTimestamp = getLastSavedTimestamp(savedActivities);
+            JSONArray newActivities = getNewStravaActivities(lastSavedTimestamp);
 
             JSONArray filteredActivities = new JSONArray();
+            Set<String> existingIds = getExistingActivityIds(savedActivities);
+
             for (int i = 0; i < newActivities.length(); i++) {
                 JSONObject activity = newActivities.getJSONObject(i);
-                if (activity.has("gear_id") && !activity.isNull("gear_id")) {
+                String activityId = activity.getString("id");
+                if (!existingIds.contains(activityId) && activity.has("gear_id") && !activity.isNull("gear_id")) {
                     String gearId = activity.getString("gear_id");
                     String gearName = getGearName(gearId);
                     if (gearName.equalsIgnoreCase(SHOE_NAME)) {
@@ -57,61 +65,40 @@ public class StravaShoeFilter {
         }
     }
 
-    private static void saveActivitiesToFile(JSONArray newActivities) {
-        JSONArray existingActivities = loadActivitiesFromFile();
-        Set<String> existingNames = new HashSet<>();
-
-        for (int i = 0; i < existingActivities.length(); i++) {
-            existingNames.add(existingActivities.getJSONObject(i).getString("name"));
-        }
-
-        for (int i = 0; i < newActivities.length(); i++) {
-            JSONObject activity = newActivities.getJSONObject(i);
-            if (!existingNames.contains(activity.getString("name"))) {
-                existingActivities.put(activity);
-            }
-        }
-
-        try (FileWriter file = new FileWriter(JSON_FILE)) {
-            file.write(existingActivities.toString(2));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static String getLastSavedDate(JSONArray activities) {
+    private static long getLastSavedTimestamp(JSONArray activities) {
         if (activities.length() == 0) {
-            return null;
+            return 0;
         }
-
-        List<String> dates = new ArrayList<>();
+        List<Long> timestamps = new ArrayList<>();
         for (int i = 0; i < activities.length(); i++) {
-            dates.add(activities.getJSONObject(i).getString("start_date"));
+            String date = activities.getJSONObject(i).getString("start_date");
+            timestamps.add(ISO8601ToUnix(date));
         }
-        dates.sort(Collections.reverseOrder());
-        return dates.get(0);
+        return Collections.max(timestamps);
     }
 
-    private static JSONArray getNewStravaActivities(String lastSavedDate) throws IOException, InterruptedException {
+    private static Set<String> getExistingActivityIds(JSONArray activities) {
+        Set<String> ids = new HashSet<>();
+        for (int i = 0; i < activities.length(); i++) {
+            ids.add(activities.getJSONObject(i).getString("id"));
+        }
+        return ids;
+    }
+
+    private static JSONArray getNewStravaActivities(long afterTimestamp) throws IOException, InterruptedException {
         int page = 1;
         JSONArray allActivities = new JSONArray();
-        Set<String> existingActivityNames = new HashSet<>();
-
-        JSONArray savedActivities = loadActivitiesFromFile();
-        for (int i = 0; i < savedActivities.length(); i++) {
-            existingActivityNames.add(savedActivities.getJSONObject(i).getString("name"));
-        }
-
         while (true) {
-            URL url = new URL(STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES);
+            URL url = new URL(STRAVA_API_URL + "?after=" + afterTimestamp +  "&page=" + page + "&per_page=" + MAX_ACTIVITIES);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
             conn.setRequestProperty("Accept", "application/json");
 
             if (conn.getResponseCode() == 429) {
-                System.out.println("\nAPI limit exceeded. Waiting 15 minutes...");
-                Thread.sleep(15 * 60 * 1000);
+                int retryAfter = conn.getHeaderFieldInt("Retry-After", 900);
+                System.out.println("\nAPI limit exceeded. Waiting" + retryAfter + "...");
+                Thread.sleep(retryAfter * 1000);
                 continue;
             }
 
@@ -126,19 +113,35 @@ public class StravaShoeFilter {
             if (activities.length() == 0) {
                 break;
             }
-            for (int i = 0; i < activities.length(); i++) {
-                JSONObject activity = activities.getJSONObject(i);
-                String activityName = activity.getString("name");
-                if (!existingActivityNames.contains(activityName)) {
-                    allActivities.put(activity);
-                }
-            }
+            allActivities.putAll(activities);
             page++;
-            if (page > 5) {
+            if (page > 5){
                 break;
             }
         }
         return allActivities;
+    }
+
+    private static void saveActivitiesToFile(JSONArray newActivities) {
+        JSONArray existingActivities = loadActivitiesFromFile();
+        Set<String> existingIds = new HashSet<>();
+
+        for (int i = 0; i < existingActivities.length(); i++) {
+            existingIds.add(existingActivities.getJSONObject(i).getString("id"));
+        }
+
+        for (int i = 0; i < newActivities.length(); i++) {
+            JSONObject activity = newActivities.getJSONObject(i);
+            if (!existingIds.contains(activity.getString("id"))) {
+                existingActivities.put(activity);
+            }
+        }
+
+        try (FileWriter file = new FileWriter(JSON_FILE)) {
+            file.write(existingActivities.toString(2));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static String getGearName(String gearId) {
@@ -161,5 +164,10 @@ public class StravaShoeFilter {
         } catch (Exception e) {
             return "N/A";
         }
+    }
+
+    private static long ISO8601ToUnix(String date) {
+        return Instant.from(DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC).parse(date))
+                .getLong(ChronoField.INSTANT_SECONDS);
     }
 }
