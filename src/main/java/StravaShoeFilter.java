@@ -12,45 +12,39 @@ import org.json.*;
 public class StravaShoeFilter {
     private static final String ACCESS_TOKEN = "743872699e2d3caa090c34085e61cfff66de9e08"; //it needs to be used from postman
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
-    private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
-    private static final String GEAR_ID = "g16810693";
+    private static final String GEAR_ID = "g16810693"; //This is the gear ID for the Saucony Tempus training shoes 6.0
     private static final String JSON_FILE = "src/main/resources/activities.json";
     private static final int MAX_ACTIVITIES = 100;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        while (true) {
-            JSONArray savedActivities = loadActivitiesFromFile();
-            long lastSavedTimestamp = getLastSavedTimestamp(savedActivities);
-            JSONArray newActivities = getNewStravaActivities(lastSavedTimestamp);
+        JSONArray savedActivities = loadActivitiesFromFile();
+        long lastSavedTimestamp = getLastSavedTimestamp(savedActivities);
+        JSONArray newActivities = getNewStravaActivities(lastSavedTimestamp);
 
-            System.out.println("Fetched new activities... " + newActivities.length());
+        System.out.println("Fetched new activities... " + newActivities.length());
 
-            JSONArray filteredActivities = new JSONArray();
-            Set<String> existingIds = getExistingActivityIds(savedActivities);
+        JSONArray filteredActivities = new JSONArray();
+        Set<String> existingIds = getExistingActivityIds(savedActivities);
 
-            Set<String> allGearNames = new HashSet<>();
-
-            for (int i = 0; i < newActivities.length(); i++) {
-                JSONObject activity = newActivities.getJSONObject(i);
-                String activityId = activity.get("id").toString();
-                if (!existingIds.contains(activityId) && activity.has("gear_id") && !activity.isNull("gear_id")) {
-                    String gearId = activity.getString("gear_id");
-                    if (gearId.equalsIgnoreCase(GEAR_ID)) {
-                        JSONObject filteredActivity = new JSONObject();
-                        filteredActivity.put("id", activityId);
-                        filteredActivity.put("name", activity.getString("name"));
-                        filteredActivity.put("start_date", activity.getString("start_date"));
-                        filteredActivity.put("distance", activity.getDouble("distance"));
-                        filteredActivities.put(filteredActivity);
-                    }
+        for (int i = 0; i < newActivities.length(); i++) {
+            JSONObject activity = newActivities.getJSONObject(i);
+            String activityId = activity.get("id").toString();
+            if (!existingIds.contains(activityId) && activity.has("gear_id") && !activity.isNull("gear_id")) {
+                String gearId = activity.getString("gear_id");
+                if (gearId.equalsIgnoreCase(GEAR_ID)) {
+                    JSONObject filteredActivity = new JSONObject();
+                    filteredActivity.put("id", activityId);
+                    filteredActivity.put("name", activity.getString("name"));
+                    filteredActivity.put("start_date", activity.getString("start_date"));
+                    filteredActivity.put("distance", activity.getDouble("distance"));
+                    filteredActivities.put(filteredActivity);
                 }
             }
-            System.out.println("Filtered activities to save: " + filteredActivities.length());
-
-            saveActivitiesToFile(filteredActivities);
-            System.out.println("\n✅ Data updated, waiting 15 minutes...");
-            Thread.sleep(15 * 60 * 1000);
         }
+        System.out.println("Filtered activities to save: " + filteredActivities.length());
+
+        saveActivitiesToFile(filteredActivities);
+        System.out.println("\n✅ Data updated.");
     }
 
     private static JSONArray loadActivitiesFromFile() {
@@ -158,7 +152,6 @@ public class StravaShoeFilter {
         return allActivities;
     }
 
-
     private static void saveActivitiesToFile(JSONArray newActivities) {
         JSONArray existingActivities = loadActivitiesFromFile();
         Set<String> existingIds = new HashSet<>();
@@ -167,10 +160,10 @@ public class StravaShoeFilter {
             existingIds.add(existingActivities.getJSONObject(i).get("id").toString());
         }
 
-        for (int i = 0; i < newActivities.length(); i++) {
+        for (int i = newActivities.length() - 1; i >= 0; i--) {
             JSONObject activity = newActivities.getJSONObject(i);
             if (!existingIds.contains(activity.get("id").toString())) {
-                existingActivities.put(activity);
+                existingActivities.put(0, activity);
             }
         }
 
