@@ -10,9 +10,10 @@ import org.json.*;
 
 
 public class StravaShoeFilter {
-    private static final String ACCESS_TOKEN = "1273284f8977594225e51ba53fcf578f79312aef"; //it needs to be used from postman
+    private static final String ACCESS_TOKEN = "743872699e2d3caa090c34085e61cfff66de9e08"; //it needs to be used from postman
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String SHOE_NAME = "Saucony Tempus training shoes 6.0";
+    private static final String GEAR_ID = "g16810693";
     private static final String JSON_FILE = "src/main/resources/activities.json";
     private static final int MAX_ACTIVITIES = 100;
 
@@ -22,17 +23,21 @@ public class StravaShoeFilter {
             long lastSavedTimestamp = getLastSavedTimestamp(savedActivities);
             JSONArray newActivities = getNewStravaActivities(lastSavedTimestamp);
 
+            System.out.println("Fetched new activities... " + newActivities.length());
+
             JSONArray filteredActivities = new JSONArray();
             Set<String> existingIds = getExistingActivityIds(savedActivities);
 
+            Set<String> allGearNames = new HashSet<>();
+
             for (int i = 0; i < newActivities.length(); i++) {
                 JSONObject activity = newActivities.getJSONObject(i);
-                String activityId = activity.getString("id");
+                String activityId = activity.get("id").toString();
                 if (!existingIds.contains(activityId) && activity.has("gear_id") && !activity.isNull("gear_id")) {
                     String gearId = activity.getString("gear_id");
-                    String gearName = getGearName(gearId);
-                    if (gearName.equalsIgnoreCase(SHOE_NAME)) {
+                    if (gearId.equalsIgnoreCase(GEAR_ID)) {
                         JSONObject filteredActivity = new JSONObject();
+                        filteredActivity.put("id", activityId);
                         filteredActivity.put("name", activity.getString("name"));
                         filteredActivity.put("start_date", activity.getString("start_date"));
                         filteredActivity.put("distance", activity.getDouble("distance"));
@@ -40,6 +45,8 @@ public class StravaShoeFilter {
                     }
                 }
             }
+            System.out.println("Filtered activities to save: " + filteredActivities.length());
+
             saveActivitiesToFile(filteredActivities);
             System.out.println("\n✅ Data updated, waiting 15 minutes...");
             Thread.sleep(15 * 60 * 1000);
@@ -80,7 +87,10 @@ public class StravaShoeFilter {
     private static Set<String> getExistingActivityIds(JSONArray activities) {
         Set<String> ids = new HashSet<>();
         for (int i = 0; i < activities.length(); i++) {
-            ids.add(activities.getJSONObject(i).getString("id"));
+            JSONObject activity = activities.getJSONObject(i);
+            if (activity.has("id")) {
+                ids.add(activity.get("id").toString());
+            }
         }
         return ids;
     }
@@ -89,7 +99,8 @@ public class StravaShoeFilter {
         int page = 1;
         JSONArray allActivities = new JSONArray();
         while (true) {
-            URL url = new URL(STRAVA_API_URL + "?after=" + afterTimestamp +  "&page=" + page + "&per_page=" + MAX_ACTIVITIES);
+            //URL url = new URL(STRAVA_API_URL + "?after=" + afterTimestamp +  "&page=" + page + "&per_page=" + MAX_ACTIVITIES);
+            URL url = new URL(STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
@@ -122,17 +133,18 @@ public class StravaShoeFilter {
         return allActivities;
     }
 
+
     private static void saveActivitiesToFile(JSONArray newActivities) {
         JSONArray existingActivities = loadActivitiesFromFile();
         Set<String> existingIds = new HashSet<>();
 
         for (int i = 0; i < existingActivities.length(); i++) {
-            existingIds.add(existingActivities.getJSONObject(i).getString("id"));
+            existingIds.add(existingActivities.getJSONObject(i).get("id").toString());
         }
 
         for (int i = 0; i < newActivities.length(); i++) {
             JSONObject activity = newActivities.getJSONObject(i);
-            if (!existingIds.contains(activity.getString("id"))) {
+            if (!existingIds.contains(activity.get("id").toString())) {
                 existingActivities.put(activity);
             }
         }
@@ -144,27 +156,27 @@ public class StravaShoeFilter {
         }
     }
 
-    private static String getGearName(String gearId) {
-        try {
-            URL url = new URL("https://www.strava.com/api/v3/gear/" + gearId);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
-            conn.setRequestProperty("Accept", "application/json");
-
-            Scanner scanner = new Scanner(conn.getInputStream());
-            StringBuilder response = new StringBuilder();
-            while (scanner.hasNext()) {
-                response.append(scanner.nextLine());
-            }
-            scanner.close();
-
-            JSONObject gearData = new JSONObject(response.toString());
-            return gearData.getString("name");
-        } catch (Exception e) {
-            return "N/A";
-        }
-    }
+//    private static String getGearName(String gearId) {
+//        try {
+//            URL url = new URL("https://www.strava.com/api/v3/gear/" + gearId);
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setRequestMethod("GET");
+//            conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
+//            conn.setRequestProperty("Accept", "application/json");
+//
+//            Scanner scanner = new Scanner(conn.getInputStream());
+//            StringBuilder response = new StringBuilder();
+//            while (scanner.hasNext()) {
+//                response.append(scanner.nextLine());
+//            }
+//            scanner.close();
+//
+//            JSONObject gearData = new JSONObject(response.toString());
+//            return gearData.getString("name");
+//        } catch (Exception e) {
+//            return "N/A";
+//        }
+//    }
 
     private static long ISO8601ToUnix(String date) {
         return Instant.from(DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC).parse(date))
