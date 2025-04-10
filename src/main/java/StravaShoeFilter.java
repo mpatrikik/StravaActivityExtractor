@@ -99,8 +99,13 @@ public class StravaShoeFilter {
         int page = 1;
         JSONArray allActivities = new JSONArray();
         while (true) {
-            //URL url = new URL(STRAVA_API_URL + "?after=" + afterTimestamp +  "&page=" + page + "&per_page=" + MAX_ACTIVITIES);
-            URL url = new URL(STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES);
+            String urlString = STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES;
+            if (afterTimestamp > 0) {
+                urlString += "&after=" + afterTimestamp;
+            }
+            URL url = new URL(urlString);
+            System.out.println("Fetching activities from URL: " + url);
+
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
@@ -109,22 +114,45 @@ public class StravaShoeFilter {
             if (conn.getResponseCode() == 429) {
                 int retryAfter = conn.getHeaderFieldInt("Retry-After", 900);
                 System.out.println("\nAPI limit exceeded. Waiting" + retryAfter + "...");
-                Thread.sleep(retryAfter * 1000);
+                Thread.sleep(retryAfter * 1000L);
                 continue;
             }
 
-            Scanner scanner = new Scanner(conn.getInputStream());
+            if (conn.getResponseCode() >= 400) {
+                System.err.println("HTTP Error: " + conn.getResponseCode() + " " + conn.getResponseMessage());
+                break;
+            }
+
+            Scanner scanner;
+            try {
+                scanner = new Scanner(conn.getInputStream());
+            } catch (IOException e) {
+                System.err.println("Could not get InputStream for URL: " + url + " - Response code: " + conn.getResponseCode());
+                break;
+            }
+
             StringBuilder response = new StringBuilder();
             while (scanner.hasNext()) {
                 response.append(scanner.nextLine());
             }
             scanner.close();
+            conn.disconnect();
 
-            JSONArray activities = new JSONArray(response.toString());
+            JSONArray activities;
+            try {
+                activities = new JSONArray(response.toString());
+            } catch (JSONException e) {
+                System.err.println("Error parsing JSON response: " + response.toString());
+                e.printStackTrace();
+                break;
+            }
             if (activities.length() == 0) {
                 break;
             }
-            allActivities.putAll(activities);
+
+            for (int i = 0; i < activities.length(); i++) {
+                allActivities.put(activities.getJSONObject(i));
+            }
             page++;
         }
         return allActivities;
@@ -152,28 +180,6 @@ public class StravaShoeFilter {
             e.printStackTrace();
         }
     }
-
-//    private static String getGearName(String gearId) {
-//        try {
-//            URL url = new URL("https://www.strava.com/api/v3/gear/" + gearId);
-//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//            conn.setRequestMethod("GET");
-//            conn.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
-//            conn.setRequestProperty("Accept", "application/json");
-//
-//            Scanner scanner = new Scanner(conn.getInputStream());
-//            StringBuilder response = new StringBuilder();
-//            while (scanner.hasNext()) {
-//                response.append(scanner.nextLine());
-//            }
-//            scanner.close();
-//
-//            JSONObject gearData = new JSONObject(response.toString());
-//            return gearData.getString("name");
-//        } catch (Exception e) {
-//            return "N/A";
-//        }
-//    }
 
     private static long ISO8601ToUnix(String date) {
         return Instant.from(DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC).parse(date))
