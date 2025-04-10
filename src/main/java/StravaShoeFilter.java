@@ -126,9 +126,6 @@ public class StravaShoeFilter {
             }
             allActivities.putAll(activities);
             page++;
-            if (page > 5){
-                break;
-            }
         }
         return allActivities;
     }
