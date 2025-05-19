@@ -18,8 +18,8 @@ public class StravaShoeFilter {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         JSONArray savedActivities = loadActivitiesFromFile();
-
-        JSONArray newActivities = getNewStravaActivities();
+        long lastTimestamp = getLastSavedTimestamp(savedActivities);
+        JSONArray newActivities = getNewStravaActivities(lastTimestamp);
 
         System.out.println("Fetched new activities... " + newActivities.length());
 
@@ -69,20 +69,21 @@ public class StravaShoeFilter {
         }
     }
 
-//    private static long getLastSavedTimestamp(JSONArray activities) {
-//        if (activities.length() == 0) {
-//            return 0;
-//        }
-//        List<Long> timestamps = new ArrayList<>();
-//        for (int i = 0; i < activities.length(); i++) {
-//            String date = activities.getJSONObject(i).getString("start_date");
-//            timestamps.add(ISO8601ToUnix(date));
-//            long ts = ISO8601ToUnix(date);
-//            System.out.println("Saved activity timestamp: " + ts + " (" + date + ")");
-//            timestamps.add(ts);
-//        }
-//        return Collections.max(timestamps);
-//    }
+    private static long getLastSavedTimestamp(JSONArray activities) {
+        if (activities.length() == 0) {
+            return 0;
+        }
+        long max = 0;
+        for (int i = 0; i < activities.length(); i++) {
+            String date = activities.getJSONObject(i).getString("start_date");
+            long ts = ISO8601ToUnix(date);
+            if (ts > max) {
+                max = ts;
+            }
+        }
+        System.out.println("⏱️ Last saved activity timestamp: " + max + " (" + Instant.ofEpochSecond(max) + ")");
+        return max;
+    }
 
     private static Set<String> getExistingActivityIds(JSONArray activities) {
         Set<String> ids = new HashSet<>();
@@ -95,11 +96,17 @@ public class StravaShoeFilter {
         return ids;
     }
 
-    private static JSONArray getNewStravaActivities() throws IOException, InterruptedException {
+    private static JSONArray getNewStravaActivities(long afterTimestamp) throws IOException, InterruptedException {
         int page = 1;
         JSONArray allActivities = new JSONArray();
+
         while (true) {
             String urlString = STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES;
+
+            if (afterTimestamp > 0) {
+                urlString += "&after=" + afterTimestamp;
+            }
+
             URL url = new URL(urlString);
             System.out.println("Fetching activities from URL: " + url);
 
@@ -139,7 +146,7 @@ public class StravaShoeFilter {
             try {
                 activities = new JSONArray(response.toString());
             } catch (JSONException e) {
-                System.err.println("Error parsing JSON response: " + response.toString());
+                System.err.println("Error parsing JSON response: " + response);
                 e.printStackTrace();
                 break;
             }
