@@ -69,20 +69,20 @@ public class StravaShoeFilter {
         }
     }
 
-    private static long getLastSavedTimestamp(JSONArray activities) {
-        if (activities.length() == 0) {
-            return 0;
-        }
-        List<Long> timestamps = new ArrayList<>();
-        for (int i = 0; i < activities.length(); i++) {
-            String date = activities.getJSONObject(i).getString("start_date");
-            timestamps.add(ISO8601ToUnix(date));
-            long ts = ISO8601ToUnix(date);
-            System.out.println("Saved activity timestamp: " + ts + " (" + date + ")");
-            timestamps.add(ts);
-        }
-        return Collections.max(timestamps);
-    }
+//    private static long getLastSavedTimestamp(JSONArray activities) {
+//        if (activities.length() == 0) {
+//            return 0;
+//        }
+//        List<Long> timestamps = new ArrayList<>();
+//        for (int i = 0; i < activities.length(); i++) {
+//            String date = activities.getJSONObject(i).getString("start_date");
+//            timestamps.add(ISO8601ToUnix(date));
+//            long ts = ISO8601ToUnix(date);
+//            System.out.println("Saved activity timestamp: " + ts + " (" + date + ")");
+//            timestamps.add(ts);
+//        }
+//        return Collections.max(timestamps);
+//    }
 
     private static Set<String> getExistingActivityIds(JSONArray activities) {
         Set<String> ids = new HashSet<>();
@@ -156,7 +156,6 @@ public class StravaShoeFilter {
         return allActivities;
     }
 
-
     private static void saveActivitiesToFile(JSONArray newActivities) {
         JSONArray existingActivities = loadActivitiesFromFile();
         Set<String> existingIds = new HashSet<>();
@@ -165,21 +164,32 @@ public class StravaShoeFilter {
             existingIds.add(existingActivities.getJSONObject(i).get("id").toString());
         }
 
-        JSONArray merged = new JSONArray();
-
+        List<JSONObject> allActivities = new ArrayList<>();
         int added = 0;
-        for (int i = newActivities.length() - 1; i >= 0; i--) {
+
+        for (int i = 0; i < newActivities.length(); i++) {
             JSONObject activity = newActivities.getJSONObject(i);
             String id = activity.get("id").toString();
-            System.out.println("Checking activity ID before save: " + activity.get("id") + ", is duplicate: " + existingIds.contains(activity.get("id").toString()));
+            System.out.println("Checking activity ID before save: " + id + ", is duplicate: " + existingIds.contains(id));
             if (!existingIds.contains(id)) {
-                merged.put(activity);
+                allActivities.add(activity);
                 added++;
             }
         }
 
-        for(int i = 0; i < existingActivities.length(); i++) {
-            merged.put(existingActivities.getJSONObject(i));
+        for (int i = 0; i < existingActivities.length(); i++) {
+            allActivities.addLast(existingActivities.getJSONObject(i));
+        }
+
+        allActivities.sort((a, b) ->     {
+            String dateA = a.getString("start_date");
+            String dateB = b.getString("start_date");
+            return ISO8601ToUnix(dateB) > ISO8601ToUnix(dateA) ? 1 : -1;
+        });
+
+        JSONArray merged = new JSONArray();
+        for (JSONObject obj : allActivities) {
+            merged.put(obj);
         }
 
         try (FileWriter file = new FileWriter(JSON_FILE)) {
@@ -188,8 +198,8 @@ public class StravaShoeFilter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
 
     private static long ISO8601ToUnix(String date) {
         return Instant.from(DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC).parse(date))
