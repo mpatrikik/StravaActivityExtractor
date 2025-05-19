@@ -1,6 +1,1136 @@
-[{
-  "distance": 7725.3,
-  "name": "Racse szpecifikus esős ráfutás",
-  "id": "14273649602",
-  "start_date": "2025-04-24T15:11:52Z"
-}]
+[
+  {
+    "distance": 21818.2,
+    "name": "Saucony Tempus avatós LSD dumcsizós Bencével",
+    "id": "10923959342",
+    "start_date": "2024-03-09T13:47:32Z"
+  },
+  {
+    "distance": 6456,
+    "name": "Lendületesebb reggeli napindító éhgyomros rohanás",
+    "id": "10927396484",
+    "start_date": "2024-03-10T06:35:27Z"
+  },
+  {
+    "distance": 13665.7,
+    "name": "Taknyos 4x4' Vo2👑",
+    "id": "10942254251",
+    "start_date": "2024-03-12T09:53:31Z"
+  },
+  {
+    "distance": 9500.6,
+    "name": "Hajnali \"Honnan ez a tempó?🤔\"",
+    "id": "10955421616",
+    "start_date": "2024-03-14T04:09:16Z"
+  },
+  {
+    "distance": 21999.3,
+    "name": "Sanremo előtti hosszú futás",
+    "id": "10971299357",
+    "start_date": "2024-03-16T11:08:04Z"
+  },
+  {
+    "distance": 7797.9,
+    "name": "Éhgyomros reco rohanás🌬️",
+    "id": "10976188512",
+    "start_date": "2024-03-17T06:18:23Z"
+  },
+  {
+    "distance": 9354.1,
+    "name": "Könnyű de mégis haladós futás",
+    "id": "10991524614",
+    "start_date": "2024-03-19T09:23:58Z"
+  },
+  {
+    "distance": 13004.3,
+    "name": "Eldobtam a versenyengedélyes papírt az edzőnének futva",
+    "id": "11014823284",
+    "start_date": "2024-03-22T13:38:08Z"
+  },
+  {
+    "distance": 6445.4,
+    "name": "Lunch Run",
+    "id": "11027552524",
+    "start_date": "2024-03-24T11:29:25Z"
+  },
+  {
+    "distance": 15583.6,
+    "name": "Tornado racsetáv - VO2max LT-Intervals (4x5')",
+    "id": "11040868282",
+    "start_date": "2024-03-26T10:05:26Z"
+  },
+  {
+    "distance": 9339,
+    "name": "Very korán van még😴💩🏃\u200d♂️\u200d➡️",
+    "id": "11052954728",
+    "start_date": "2024-03-28T04:09:02Z"
+  },
+  {
+    "distance": 9366.5,
+    "name": "Medulin TC day 1 - átmozgató futkározás Ferivel",
+    "id": "11063115196",
+    "start_date": "2024-03-29T15:21:47Z"
+  },
+  {
+    "distance": 8007.7,
+    "name": "Medulin TC day 3 - Ráfutás az orkánban",
+    "id": "11076349325",
+    "start_date": "2024-03-31T11:59:22Z"
+  },
+  {
+    "distance": 13202.1,
+    "name": "Medulin TC day 5 - VO2max LT-Intervals (3x6')",
+    "id": "11091065930",
+    "start_date": "2024-04-02T14:03:01Z"
+  },
+  {
+    "distance": 12155.9,
+    "name": "Medulin TC day 7 - Napfelkelte búcsúzó éhgyomros futás🌄",
+    "id": "11102716797",
+    "start_date": "2024-04-04T04:45:47Z"
+  },
+  {
+    "distance": 21502.9,
+    "name": "Hosszú futás kicsit melegebb időben - Anyuka kísért, frissített",
+    "id": "11120084219",
+    "start_date": "2024-04-06T13:20:52Z"
+  },
+  {
+    "distance": 6315.9,
+    "name": "Ráfutás😖",
+    "id": "11128234365",
+    "start_date": "2024-04-07T12:53:33Z"
+  },
+  {
+    "distance": 15363.8,
+    "name": "Rogyás kedd 🥵 - VO2max LT-Intervals (3x7')",
+    "id": "11140630850",
+    "start_date": "2024-04-09T09:03:47Z"
+  },
+  {
+    "distance": 9337.1,
+    "name": "Hajnali ébresztő rohanás(vagy rohadás?🤔)",
+    "id": "11154339114",
+    "start_date": "2024-04-11T03:07:28Z"
+  },
+  {
+    "distance": 6449.7,
+    "name": "Brick is key!",
+    "id": "11165307419",
+    "start_date": "2024-04-12T15:20:53Z"
+  },
+  {
+    "distance": 17814.4,
+    "name": "Negyedéves szarfutás megvolt😩",
+    "id": "11172715317",
+    "start_date": "2024-04-13T13:06:01Z"
+  },
+  {
+    "distance": 9316.1,
+    "name": "Akkor kell menni ha jól esik🌧",
+    "id": "11193234546",
+    "start_date": "2024-04-16T08:18:31Z"
+  },
+  {
+    "distance": 6348.4,
+    "name": "Brikkentyű",
+    "id": "11201207323",
+    "start_date": "2024-04-17T09:25:21Z"
+  },
+  {
+    "distance": 10579.9,
+    "name": "🧑🏻\u200d💻🏃\u200d♂️🧑🏻\u200d💻",
+    "id": "11209764957",
+    "start_date": "2024-04-18T12:11:24Z"
+  },
+  {
+    "distance": 9321.6,
+    "name": "Átmozgató alapos faluvégevissza",
+    "id": "11244292591",
+    "start_date": "2024-04-23T08:06:37Z"
+  },
+  {
+    "distance": 6338.5,
+    "name": "Nagyon nedves ráfutás",
+    "id": "11252298941",
+    "start_date": "2024-04-24T09:04:03Z"
+  },
+  {
+    "distance": 10297.7,
+    "name": "Oakley Encoder Strike Vented matte carbon Prizm 24K avató rohanás 👑",
+    "id": "11299579266",
+    "start_date": "2024-04-30T15:00:26Z"
+  },
+  {
+    "distance": 9388.6,
+    "name": "Sunrise run🌄",
+    "id": "11312470731",
+    "start_date": "2024-05-02T03:04:44Z"
+  },
+  {
+    "distance": 9360.6,
+    "name": "Alapos futás Giro után",
+    "id": "11353836917",
+    "start_date": "2024-05-07T15:05:53Z"
+  },
+  {
+    "distance": 6301.3,
+    "name": "Rájafutás a TTaperálásra",
+    "id": "11359500290",
+    "start_date": "2024-05-08T09:23:06Z"
+  },
+  {
+    "distance": 6281.7,
+    "name": "Kerékpár simogatás után egy átmozgató rohanás",
+    "id": "11375535882",
+    "start_date": "2024-05-10T08:52:15Z"
+  },
+  {
+    "distance": 2147.5,
+    "name": "Agárd triatlon bemelegítő futi",
+    "id": "11385666386",
+    "start_date": "2024-05-11T09:59:21Z"
+  },
+  {
+    "distance": 1714.7,
+    "name": "Agárd triatlon rövidtáv lelöttyenés",
+    "id": "11385669684",
+    "start_date": "2024-05-11T12:46:54Z"
+  },
+  {
+    "distance": 12490.5,
+    "name": "1 óra alap, benne 2x5' supra",
+    "id": "11409781604",
+    "start_date": "2024-05-14T15:32:30Z"
+  },
+  {
+    "distance": 9329.4,
+    "name": "Hajnali ébresztő futkározás🌄",
+    "id": "11421439582",
+    "start_date": "2024-05-16T03:10:24Z"
+  },
+  {
+    "distance": 8350.3,
+    "name": "#bomblegs brick run",
+    "id": "11432568014",
+    "start_date": "2024-05-17T14:51:02Z"
+  },
+  {
+    "distance": 22007.4,
+    "name": "LSD run🎧",
+    "id": "11438386999",
+    "start_date": "2024-05-18T09:35:11Z"
+  },
+  {
+    "distance": 17058.8,
+    "name": "Akkor kezdjük ezeket! - Threshold-Intervals (4x7')",
+    "id": "11464314599",
+    "start_date": "2024-05-21T14:16:47Z"
+  },
+  {
+    "distance": 7769.3,
+    "name": "Napindító éhgyomros végre nem hajnali rohanás 1/3",
+    "id": "11476728526",
+    "start_date": "2024-05-23T05:46:53Z"
+  },
+  {
+    "distance": 6294.7,
+    "name": "Elszomjazós tégla 3/3",
+    "id": "11479873738",
+    "start_date": "2024-05-23T15:40:37Z"
+  },
+  {
+    "distance": 21926.9,
+    "name": "Hosszú futás, sárkányhajó betekintéssel",
+    "id": "11492325760",
+    "start_date": "2024-05-25T08:00:27Z"
+  },
+  {
+    "distance": 6299.3,
+    "name": "Lerogyott ráfutás",
+    "id": "11502714704",
+    "start_date": "2024-05-26T11:31:45Z"
+  },
+  {
+    "distance": 11604.2,
+    "name": "Prague exploRUN🇨🇿",
+    "id": "11514233794",
+    "start_date": "2024-05-28T04:51:10Z"
+  },
+  {
+    "distance": 8700.2,
+    "name": "Éhgyomorra 🇨🇿 alapos és egy KOM kísérlet",
+    "id": "11522096296",
+    "start_date": "2024-05-29T04:56:09Z"
+  },
+  {
+    "distance": 9013.2,
+    "name": "Búcsú rohanás egy KOM kíséretében 👑🇨🇿",
+    "id": "11530016295",
+    "start_date": "2024-05-30T04:52:46Z"
+  },
+  {
+    "distance": 22510.5,
+    "name": "Szokásos szombati hosszú futás tesómszal🚴🏻\u200d♀️🏃\u200d♂️🎶",
+    "id": "11549049568",
+    "start_date": "2024-06-01T13:59:32Z"
+  },
+  {
+    "distance": 6269.7,
+    "name": "Ráfutás🥵",
+    "id": "11555498834",
+    "start_date": "2024-06-02T11:58:02Z"
+  },
+  {
+    "distance": 7136.6,
+    "name": "Rövid átmozgató rohanás",
+    "id": "11572020588",
+    "start_date": "2024-06-04T14:49:05Z"
+  },
+  {
+    "distance": 6172.5,
+    "name": "Futó világnap - Racse specifikus brick run",
+    "id": "11580799759",
+    "start_date": "2024-06-05T15:27:36Z"
+  },
+  {
+    "distance": 6397.9,
+    "name": "Üzemi hőfokon tartó koccanás🥵",
+    "id": "11596521343",
+    "start_date": "2024-06-07T15:00:45Z"
+  },
+  {
+    "distance": 2273.8,
+    "name": "X. Keszthely triatlon sprint - bemelegítő kocc",
+    "id": "11605515982",
+    "start_date": "2024-06-08T14:02:01Z"
+  },
+  {
+    "distance": 2181.3,
+    "name": "X. Keszthely triatlon sprint - lelöttyenés",
+    "id": "11605517815",
+    "start_date": "2024-06-08T15:50:54Z"
+  },
+  {
+    "distance": 6453.2,
+    "name": "Rájafutás💥",
+    "id": "11628204970",
+    "start_date": "2024-06-11T15:59:07Z"
+  },
+  {
+    "distance": 19149.9,
+    "name": "Track thursday - 10×1000 progressive",
+    "id": "11643854010",
+    "start_date": "2024-06-13T14:00:40Z"
+  },
+  {
+    "distance": 21534.7,
+    "name": "Állóképességi meleg megszok(p)ás 🏃\u200d➡️",
+    "id": "11656505132",
+    "start_date": "2024-06-15T08:37:24Z"
+  },
+  {
+    "distance": 6402.6,
+    "name": "Elfogyós ráfutás🫨",
+    "id": "11666095374",
+    "start_date": "2024-06-16T11:14:51Z"
+  },
+  {
+    "distance": 17451.6,
+    "name": "Trekk csúzdéj/heat training🫠🥵 - Threshold-Intervals (6x1500 progressive)",
+    "id": "11681991195",
+    "start_date": "2024-06-18T14:08:11Z"
+  },
+  {
+    "distance": 6410.8,
+    "name": "Brick run after a quality bike session",
+    "id": "11699783631",
+    "start_date": "2024-06-20T16:03:03Z"
+  },
+  {
+    "distance": 10275.2,
+    "name": "Jószar jórövid 🏃\u200d➡️💩",
+    "id": "11712950831",
+    "start_date": "2024-06-22T14:02:23Z"
+  },
+  {
+    "distance": 16288.7,
+    "name": "Last track thuesday before the main races🏁 - Threshold-Intervals (4x2000 progressive)",
+    "id": "11734503279",
+    "start_date": "2024-06-25T09:08:30Z"
+  },
+  {
+    "distance": 6437.2,
+    "name": "Pörgős tégla rohanás",
+    "id": "11751332280",
+    "start_date": "2024-06-27T10:51:48Z"
+  },
+  {
+    "distance": 20139.5,
+    "name": "100 perc megrohadás a pokolban🥵😵\u200d💫🏃🏽\u200d➡️",
+    "id": "11766541843",
+    "start_date": "2024-06-29T08:37:41Z"
+  },
+  {
+    "distance": 8033.4,
+    "name": "Jáú melegben ráfutás a hosszú rájdra🚿",
+    "id": "11774086408",
+    "start_date": "2024-06-30T10:29:37Z"
+  },
+  {
+    "distance": 8002.6,
+    "name": "Könnyed nyolcas átmozgató🌪🏃\u200d➡️",
+    "id": "11790949519",
+    "start_date": "2024-07-02T14:47:16Z"
+  },
+  {
+    "distance": 6162.1,
+    "name": "Téper brick intenzívvel🏃\u200d➡️",
+    "id": "11799607096",
+    "start_date": "2024-07-03T15:27:54Z"
+  },
+  {
+    "distance": 6270.3,
+    "name": "Vasi activation run",
+    "id": "11814717710",
+    "start_date": "2024-07-05T13:48:12Z"
+  },
+  {
+    "distance": 2136.6,
+    "name": "40. Vasi Vasember - melegítő futás",
+    "id": "11821534668",
+    "start_date": "2024-07-06T08:32:08Z"
+  },
+  {
+    "distance": 9340.7,
+    "name": "Hő adaptáció going in🏃\u200d➡️❤️\u200d🔥",
+    "id": "11846979883",
+    "start_date": "2024-07-09T14:50:32Z"
+  },
+  {
+    "distance": 6165.2,
+    "name": "Intenzív ráfutás🔥",
+    "id": "11855321841",
+    "start_date": "2024-07-10T15:19:27Z"
+  },
+  {
+    "distance": 6273,
+    "name": "Activation 🏃\u200d➡️ for OLM in the hell(yeah)🥵🔥",
+    "id": "11870536587",
+    "start_date": "2024-07-12T14:07:02Z"
+  },
+  {
+    "distance": 2856.8,
+    "name": "Old Lake Man rövidtáv 2024 - melegítő futás",
+    "id": "11880293201",
+    "start_date": "2024-07-13T13:26:49Z"
+  },
+  {
+    "distance": 10120.6,
+    "name": "Elkísért a mutti futni ebben a dögmelegben🫠",
+    "id": "11911735101",
+    "start_date": "2024-07-17T15:04:29Z"
+  },
+  {
+    "distance": 6426.7,
+    "name": "Beforgott a ráfutás👌",
+    "id": "11920444796",
+    "start_date": "2024-07-18T15:41:45Z"
+  },
+  {
+    "distance": 6450.8,
+    "name": "Ideglevezető füred kör🤯🍺",
+    "id": "11928688067",
+    "start_date": "2024-07-19T15:55:31Z"
+  },
+  {
+    "distance": 12431.4,
+    "name": "Végre emberi időjárás🤩👌🏃\u200d➡️",
+    "id": "11936226116",
+    "start_date": "2024-07-20T13:39:12Z"
+  },
+  {
+    "distance": 18373.2,
+    "name": "Keddi hosszúkásabb anyucikával🚴🏻\u200d♀️🏃🏻",
+    "id": "11961402268",
+    "start_date": "2024-07-23T14:15:09Z"
+  },
+  {
+    "distance": 5333.4,
+    "name": "20 perc brick 🏃🏻 helyett 30, ami 25 lett",
+    "id": "11974772195",
+    "start_date": "2024-07-24T16:37:11Z"
+  },
+  {
+    "distance": 6284.6,
+    "name": "Kerékpár basztatás utáni Fadd aktiválás",
+    "id": "11986502149",
+    "start_date": "2024-07-26T14:25:49Z"
+  },
+  {
+    "distance": 1975.3,
+    "name": "XL. Fadd-Dombori sprint OB - melegítő kocogás",
+    "id": "11996288623",
+    "start_date": "2024-07-27T12:29:23Z"
+  },
+  {
+    "distance": 12366.1,
+    "name": "1 óra lötyögés",
+    "id": "12019758780",
+    "start_date": "2024-07-30T14:49:24Z"
+  },
+  {
+    "distance": 9441,
+    "name": "Kicsivel hosszabb rájafutás",
+    "id": "12038295509",
+    "start_date": "2024-08-01T15:45:19Z"
+  },
+  {
+    "distance": 22085.9,
+    "name": "Klasszik hosszúfutás nyaralódás előtt",
+    "id": "12054137789",
+    "start_date": "2024-08-03T13:07:39Z"
+  },
+  {
+    "distance": 9407.2,
+    "name": "Éhgyomorra napospart kocogás 🇧🇬",
+    "id": "12073866966",
+    "start_date": "2024-08-06T03:57:30Z"
+  },
+  {
+    "distance": 7191.8,
+    "name": "Reggeli és csúszkázás előtt egy koccanás🇧🇬🛝",
+    "id": "12096142887",
+    "start_date": "2024-08-08T03:54:16Z"
+  },
+  {
+    "distance": 9394.6,
+    "name": "\"Kedvem szottyant futni egyet\" 🇧🇬🏃\u200d♂️🌪⛱️🌊☀️",
+    "id": "12102425181",
+    "start_date": "2024-08-09T10:47:42Z"
+  },
+  {
+    "distance": 8001.3,
+    "name": "Kóbászolás erre meg arra 🇧🇬🏃\u200d♂️🌪",
+    "id": "12110346868",
+    "start_date": "2024-08-10T10:52:32Z"
+  },
+  {
+    "distance": 13096.2,
+    "name": "Pokoli🏃\u200d♂️🥵 - Threshold-Intervals (5/8x1000 progressive)",
+    "id": "12138795565",
+    "start_date": "2024-08-13T14:30:06Z"
+  },
+  {
+    "distance": 6284.2,
+    "name": "Softkulacs egy jó találmány - brick run",
+    "id": "12156511128",
+    "start_date": "2024-08-15T15:57:03Z"
+  },
+  {
+    "distance": 17640.2,
+    "name": "Jófos nemhosszú hosszúfutás🥵",
+    "id": "12171785546",
+    "start_date": "2024-08-17T13:37:00Z"
+  },
+  {
+    "distance": 6296.4,
+    "name": "Brikk rán",
+    "id": "12180712741",
+    "start_date": "2024-08-18T12:33:38Z"
+  },
+  {
+    "distance": 16113.8,
+    "name": "Mission failure 🇭🇺 - Threshold-Intervals (10/12x800 )",
+    "id": "12198109381",
+    "start_date": "2024-08-20T14:01:11Z"
+  },
+  {
+    "distance": 6516.7,
+    "name": "Achilles tesztelő rövid ámozgi",
+    "id": "12315557435",
+    "start_date": "2024-09-03T14:06:33Z"
+  },
+  {
+    "distance": 6285.1,
+    "name": "Tapering-Intervals as brick run",
+    "id": "12323552700",
+    "start_date": "2024-09-04T09:54:57Z"
+  },
+  {
+    "distance": 6033.2,
+    "name": "Activation run for Fűzfő✌️",
+    "id": "12339339577",
+    "start_date": "2024-09-06T09:04:11Z"
+  },
+  {
+    "distance": 2129.8,
+    "name": "Balatonman rövidtáv 2024 melegítő koccanás",
+    "id": "12348351235",
+    "start_date": "2024-09-07T07:26:24Z"
+  },
+  {
+    "distance": 9362,
+    "name": "És akkor újra itt az ősz🍂🏃\u200d♂️\u200d➡️",
+    "id": "12375839756",
+    "start_date": "2024-09-10T15:00:04Z"
+  },
+  {
+    "distance": 6309.7,
+    "name": "Just a usual brick run",
+    "id": "12390472708",
+    "start_date": "2024-09-12T09:50:02Z"
+  },
+  {
+    "distance": 19146.5,
+    "name": "Páros lábbal berúgta az ajtót az ősz - hosszabb futás",
+    "id": "12408031646",
+    "start_date": "2024-09-14T09:57:17Z"
+  },
+  {
+    "distance": 8033.9,
+    "name": "Qulity work🫡 - Brick run (4x1000)",
+    "id": "12416603481",
+    "start_date": "2024-09-15T10:36:32Z"
+  },
+  {
+    "distance": 7335.8,
+    "name": "Tapering-Intervals as brick run for Ajka",
+    "id": "12444158631",
+    "start_date": "2024-09-18T15:06:36Z"
+  },
+  {
+    "distance": 7498.4,
+    "name": "Átmozgató rohanás, árvíz helyzet csekk",
+    "id": "12452471435",
+    "start_date": "2024-09-19T15:01:19Z"
+  },
+  {
+    "distance": 7331.5,
+    "name": "Ektivésön átakerítésön 🏃\u200d♂️",
+    "id": "12464912252",
+    "start_date": "2024-09-21T09:03:10Z"
+  },
+  {
+    "distance": 9522.3,
+    "name": "Kockulás után egy lazi átmozgi🏃\u200d♂️\u200d➡️",
+    "id": "12501527449",
+    "start_date": "2024-09-25T14:47:56Z"
+  },
+  {
+    "distance": 8740.5,
+    "name": "Éhgyomros napinditó 🏃\u200d♂️ 1/2",
+    "id": "12506755285",
+    "start_date": "2024-09-26T06:00:29Z"
+  },
+  {
+    "distance": 12846,
+    "name": "Tornado 🏃\u200d♂️\u200d➡️🌪 Supra-Threshold/VO2max IE-Workout 2/2",
+    "id": "12509491117",
+    "start_date": "2024-09-26T14:34:27Z"
+  },
+  {
+    "distance": 13714.3,
+    "name": "Race-Pace-Intervals (6x1000) on the treadmill🫡🥵",
+    "id": "12523364331",
+    "start_date": "2024-09-28T09:19:27Z"
+  },
+  {
+    "distance": 18232.1,
+    "name": "Szeles hosszabbacska alapos futi",
+    "id": "12532372675",
+    "start_date": "2024-09-29T08:17:31Z"
+  },
+  {
+    "distance": 8000.4,
+    "name": "Hajnali alapos 🏃\u200d♂️🌅 1/2",
+    "id": "12545012418",
+    "start_date": "2024-10-01T03:12:44Z"
+  },
+  {
+    "distance": 13833.9,
+    "name": "Track thuesday - Supra-Threshold/VO2max IE-Workout (15x400) 2/2",
+    "id": "12549855991",
+    "start_date": "2024-10-01T14:07:22Z"
+  },
+  {
+    "distance": 8813.6,
+    "name": "Ipari éhgyomros 🏃\u200d♂️ 1/2",
+    "id": "12562099458",
+    "start_date": "2024-10-03T05:40:04Z"
+  },
+  {
+    "distance": 16690,
+    "name": "Race-Pace-Intervals (8x1000) on the treadmill🫡🥵",
+    "id": "12566811843",
+    "start_date": "2024-10-03T14:23:34Z"
+  },
+  {
+    "distance": 20945.5,
+    "name": "Bencével egy hosszú koccanás🤝",
+    "id": "12589054695",
+    "start_date": "2024-10-06T08:10:47Z"
+  },
+  {
+    "distance": 9334.3,
+    "name": "Klasszik falu vége meg vissza🏃\u200d♂️",
+    "id": "12611485014",
+    "start_date": "2024-10-08T15:21:23Z"
+  },
+  {
+    "distance": 11343.5,
+    "name": "Volt már jobb is - Tapering-Intervals (3x1000)",
+    "id": "12613667946",
+    "start_date": "2024-10-09T09:27:55Z"
+  },
+  {
+    "distance": 6287.6,
+    "name": "Naplementés sék áut futás 🩸",
+    "id": "12662118818",
+    "start_date": "2024-10-15T15:08:06Z"
+  },
+  {
+    "distance": 9784.8,
+    "name": "Ensport MLSS teszt",
+    "id": "12675814837",
+    "start_date": "2024-10-16T10:15:06Z"
+  },
+  {
+    "distance": 7707.4,
+    "name": "De jó volt végre futni🤩",
+    "id": "12877043848",
+    "start_date": "2024-11-11T15:55:55Z"
+  },
+  {
+    "distance": 9928.6,
+    "name": "Base run - Z1",
+    "id": "12900325953",
+    "start_date": "2024-11-14T16:04:25Z"
+  },
+  {
+    "distance": 12002,
+    "name": "1 óra vissza építkezés🏃\u200d♂️",
+    "id": "12916045702",
+    "start_date": "2024-11-16T15:36:18Z"
+  },
+  {
+    "distance": 11696.4,
+    "name": "Aklimatizésön átakeritésön - VO2max IE-Intervals (3x6x20\"/20\")",
+    "id": "12929752220",
+    "start_date": "2024-11-18T14:03:56Z"
+  },
+  {
+    "distance": 10002.7,
+    "name": "Ebéd helyett 50 perc kényelmes 🏃\u200d♂️",
+    "id": "12951904378",
+    "start_date": "2024-11-21T10:57:58Z"
+  },
+  {
+    "distance": 9414.9,
+    "name": "💈utáni esik a köd?!  🏃\u200d♂️",
+    "id": "13000980675",
+    "start_date": "2024-11-28T10:19:16Z"
+  },
+  {
+    "distance": 13123.4,
+    "name": "Fussatok bolondok",
+    "id": "13017275070",
+    "start_date": "2024-11-30T14:20:07Z"
+  },
+  {
+    "distance": 8549,
+    "name": "City loop🏃\u200d♂️",
+    "id": "13038493760",
+    "start_date": "2024-12-03T15:18:44Z"
+  },
+  {
+    "distance": 7904.4,
+    "name": "Éhgyomros kocogás",
+    "id": "13050523840",
+    "start_date": "2024-12-05T07:36:26Z"
+  },
+  {
+    "distance": 12100,
+    "name": "1 óra sötétségben lépkedés",
+    "id": "13067566111",
+    "start_date": "2024-12-07T15:36:39Z"
+  },
+  {
+    "distance": 8009.2,
+    "name": "40 perc undormány",
+    "id": "13079876272",
+    "start_date": "2024-12-09T15:52:35Z"
+  },
+  {
+    "distance": 14396.9,
+    "name": "Undorító fos időjárás🌧🌫🏃\u200d♂️ - VO2max IE-Intervals (15x60\"/60\") 2/3",
+    "id": "13087036416",
+    "start_date": "2024-12-10T14:52:59Z"
+  },
+  {
+    "distance": 19258.8,
+    "name": "XI. PIPU Bencével",
+    "id": "13121679730",
+    "start_date": "2024-12-15T12:39:14Z"
+  },
+  {
+    "distance": 7850.2,
+    "name": "Éhgyomros karácsonyi kocogás 🎄",
+    "id": "13191379033",
+    "start_date": "2024-12-26T06:49:04Z"
+  },
+  {
+    "distance": 6132.6,
+    "name": "Kimozgató, levezető, könnyű, rövid futkározás a roggyant vállakra",
+    "id": "13210404355",
+    "start_date": "2024-12-28T15:12:48Z"
+  },
+  {
+    "distance": 9340.6,
+    "name": "Nahát mi ez a hideg?! 🏃🏻🥶",
+    "id": "13225597069",
+    "start_date": "2024-12-30T16:13:17Z"
+  },
+  {
+    "distance": 11334,
+    "name": "1 óra alap Vo2 helyett😢",
+    "id": "13229890668",
+    "start_date": "2024-12-31T09:33:45Z"
+  },
+  {
+    "distance": 8413.5,
+    "name": "Évkezdő 2025 rajzolás Bencével🏃\u200d♂️🏃🏻",
+    "id": "13237381307",
+    "start_date": "2025-01-01T09:57:47Z"
+  },
+  {
+    "distance": 9320.9,
+    "name": "Éhgyomorra kis csúszkálás",
+    "id": "13244114437",
+    "start_date": "2025-01-02T07:46:48Z"
+  },
+  {
+    "distance": 14723.6,
+    "name": "Alapálló majdnem megfagyós futás",
+    "id": "13267133066",
+    "start_date": "2025-01-04T16:51:37Z"
+  },
+  {
+    "distance": 8005.6,
+    "name": "Mi ez a meleg?! 🏃🏻",
+    "id": "13291125778",
+    "start_date": "2025-01-07T15:15:51Z"
+  },
+  {
+    "distance": 6325,
+    "name": "Éhgyomros kocogás",
+    "id": "13305808876",
+    "start_date": "2025-01-09T07:24:00Z"
+  },
+  {
+    "distance": 10102,
+    "name": "Na, ma sem sikerült világosban futni",
+    "id": "13327581467",
+    "start_date": "2025-01-11T15:48:18Z"
+  },
+  {
+    "distance": 9325.3,
+    "name": "Ez egynek elment 🏃🏻",
+    "id": "13345572558",
+    "start_date": "2025-01-13T16:00:08Z"
+  },
+  {
+    "distance": 8500,
+    "name": "Recovery snowrunner cityloop",
+    "id": "13363673556",
+    "start_date": "2025-01-15T15:43:25Z"
+  },
+  {
+    "distance": 11824.5,
+    "name": "Hajnali éhgyomros 🏃🏿\u200d➡️💩",
+    "id": "13384062204",
+    "start_date": "2025-01-18T04:04:33Z"
+  },
+  {
+    "distance": 12669.2,
+    "name": "Dupla VO2MAX nap 🏃🏻 - VO2max-MT-Intervals (6x2') 2/2",
+    "id": "13415240496",
+    "start_date": "2025-01-21T15:21:45Z"
+  },
+  {
+    "distance": 9006.3,
+    "name": "Éhgyomros koccantás",
+    "id": "13429540467",
+    "start_date": "2025-01-23T07:07:07Z"
+  },
+  {
+    "distance": 6336.7,
+    "name": "Betegség utáni újrakezdő kocogás",
+    "id": "13512591938",
+    "start_date": "2025-02-01T15:36:26Z"
+  },
+  {
+    "distance": 7899.1,
+    "name": "Ez egy nagyon jóleső futás volt👌",
+    "id": "13530342705",
+    "start_date": "2025-02-03T16:41:00Z"
+  },
+  {
+    "distance": 9350.7,
+    "name": "Olyan semmilyen átlagos egynek elment rohanás",
+    "id": "13540523596",
+    "start_date": "2025-02-04T16:54:45Z"
+  },
+  {
+    "distance": 7791,
+    "name": "Éhező gyomros futkározás",
+    "id": "13553627878",
+    "start_date": "2025-02-06T07:08:28Z"
+  },
+  {
+    "distance": 10007.2,
+    "name": "Ebéd helyett 10 kilcsi futkározás",
+    "id": "13572804881",
+    "start_date": "2025-02-08T10:33:38Z"
+  },
+  {
+    "distance": 10533.2,
+    "name": "Napi 2. megrogyás✅ - 4/5×3' VO2MAX 🏃\u200d♂️",
+    "id": "13600885714",
+    "start_date": "2025-02-11T15:23:22Z"
+  },
+  {
+    "distance": 9332.6,
+    "name": "Éhgyomros szutyokidőjárás 🏃\u200d♂️\u200d➡️",
+    "id": "13614864810",
+    "start_date": "2025-02-13T06:56:52Z"
+  },
+  {
+    "distance": 17627.4,
+    "name": "Long time no see Mr. fat metabolism run",
+    "id": "13635673192",
+    "start_date": "2025-02-15T14:32:48Z"
+  },
+  {
+    "distance": 7735.5,
+    "name": "Napindító fagyos éhgyomros téma",
+    "id": "13639695561",
+    "start_date": "2025-02-16T07:00:27Z"
+  },
+  {
+    "distance": 13430.4,
+    "name": "Double Vo2max day 2/2 🏃🏻 - VO2max-MT-Intervals (4x4')",
+    "id": "13661466314",
+    "start_date": "2025-02-18T15:11:50Z"
+  },
+  {
+    "distance": 9311,
+    "name": "Volt vagy minusz sok odakint🥶🏃\u200d♂️",
+    "id": "13676065383",
+    "start_date": "2025-02-20T06:31:04Z"
+  },
+  {
+    "distance": 17761.6,
+    "name": "Fat metabolism, endurance things",
+    "id": "13697852376",
+    "start_date": "2025-02-22T14:59:50Z"
+  },
+  {
+    "distance": 7277.9,
+    "name": "Ébresztő éhgyomros futás",
+    "id": "13702031355",
+    "start_date": "2025-02-23T07:09:10Z"
+  },
+  {
+    "distance": 13292.2,
+    "name": "Klasszik keddi Vo2 2/2 🏃\u200d♂️  - VO2max-MT-Intervals (3x5')",
+    "id": "13724100608",
+    "start_date": "2025-02-25T15:10:41Z"
+  },
+  {
+    "distance": 9331,
+    "name": "Éhgyomros túlöltözés",
+    "id": "13739390305",
+    "start_date": "2025-02-27T06:35:23Z"
+  },
+  {
+    "distance": 20069.1,
+    "name": "Fat meta long run 😮\u200d💨🤧",
+    "id": "13762194117",
+    "start_date": "2025-03-01T15:10:21Z"
+  },
+  {
+    "distance": 6329.9,
+    "name": "Csak egy rövid éhgyomros kocogás",
+    "id": "13765306071",
+    "start_date": "2025-03-02T07:07:20Z"
+  },
+  {
+    "distance": 9497,
+    "name": "Szeretem futás 🤗🌇",
+    "id": "13789053724",
+    "start_date": "2025-03-04T15:05:24Z"
+  },
+  {
+    "distance": 9603.9,
+    "name": "Chilles kocogások🌞",
+    "id": "13798799238",
+    "start_date": "2025-03-05T15:03:40Z"
+  },
+  {
+    "distance": 8229.5,
+    "name": "Reggeli üresen futkorászás🥶",
+    "id": "13802526618",
+    "start_date": "2025-03-06T05:44:58Z"
+  },
+  {
+    "distance": 11830.2,
+    "name": "Egy óra alapos Strade után🌇🏃🏻",
+    "id": "13826707755",
+    "start_date": "2025-03-08T16:00:14Z"
+  },
+  {
+    "distance": 16989.7,
+    "name": "Threshold/Supra-Threshold Intervals (5x1000+500)",
+    "id": "13853936522",
+    "start_date": "2025-03-11T15:03:05Z"
+  },
+  {
+    "distance": 6997.8,
+    "name": "Rövid éhgyomros kocogás",
+    "id": "13868702702",
+    "start_date": "2025-03-13T06:50:56Z"
+  },
+  {
+    "distance": 6357.1,
+    "name": "Az idei első ráfutás",
+    "id": "13872196766",
+    "start_date": "2025-03-13T15:48:28Z"
+  },
+  {
+    "distance": 19203.3,
+    "name": "Long run with mom🇭🇺👩\u200d👦",
+    "id": "13891868530",
+    "start_date": "2025-03-15T14:40:41Z"
+  },
+  {
+    "distance": 7006.2,
+    "name": "Reggeli helyett egy rövid ébresztő🏃\u200d➡️",
+    "id": "13894910293",
+    "start_date": "2025-03-16T07:05:07Z"
+  },
+  {
+    "distance": 19277.4,
+    "name": "Epikus érzések🙂\u200d↔️ - Threshold/Supra-Threshold(6×1k + 5×500m)",
+    "id": "13917762879",
+    "start_date": "2025-03-18T14:44:37Z"
+  },
+  {
+    "distance": 8137.6,
+    "name": "Reggelire",
+    "id": "13934006933",
+    "start_date": "2025-03-20T06:42:22Z"
+  },
+  {
+    "distance": 6700.1,
+    "name": "Belendült brick",
+    "id": "13939090953",
+    "start_date": "2025-03-20T16:08:15Z"
+  },
+  {
+    "distance": 20011.9,
+    "name": "Voltak már jobb érzéseim is hosszú futás során",
+    "id": "13955950119",
+    "start_date": "2025-03-22T10:51:11Z"
+  },
+  {
+    "distance": 7782.4,
+    "name": "Reggeli éhgyomros ázás🌧",
+    "id": "13970797778",
+    "start_date": "2025-03-23T07:17:14Z"
+  },
+  {
+    "distance": 18418.5,
+    "name": "Epic RIP ROTTY - Threshold/Supra-Threshold Intervals (5x1200+600)",
+    "id": "13985690916",
+    "start_date": "2025-03-25T14:50:08Z"
+  },
+  {
+    "distance": 7758.2,
+    "name": "Éhgyomros zsíranyagcsere edzés",
+    "id": "13999790848",
+    "start_date": "2025-03-27T07:02:47Z"
+  },
+  {
+    "distance": 6282.1,
+    "name": "Fáradt ráfutás😮\u200d💨",
+    "id": "14003697183",
+    "start_date": "2025-03-27T16:19:15Z"
+  },
+  {
+    "distance": 6453,
+    "name": "Éhgyomros jóleső rohangálás",
+    "id": "14026504790",
+    "start_date": "2025-03-30T06:40:53Z"
+  },
+  {
+    "distance": 8083.8,
+    "name": "Éhgyomros visszarázódás🤧",
+    "id": "14065894122",
+    "start_date": "2025-04-03T05:43:30Z"
+  },
+  {
+    "distance": 8020.5,
+    "name": "Reggelire egy kényelmes éhgyomros🏃🏻",
+    "id": "14083869042",
+    "start_date": "2025-04-05T05:40:58Z"
+  },
+  {
+    "distance": 21534,
+    "name": "110 perc zsírból és egy másodpercel se több",
+    "id": "14097152985",
+    "start_date": "2025-04-06T08:13:52Z"
+  },
+  {
+    "distance": 9369.3,
+    "name": "Plazmaadás előtt egy könnyed alapos 🏃\u200d♂️\u200d➡️",
+    "id": "14114936668",
+    "start_date": "2025-04-08T08:29:23Z"
+  },
+  {
+    "distance": 8695.8,
+    "name": "Kocogás némi lendítéssel",
+    "id": "14127616462",
+    "start_date": "2025-04-09T14:18:28Z"
+  },
+  {
+    "distance": 6211.4,
+    "name": "Tornado brick",
+    "id": "14138022861",
+    "start_date": "2025-04-10T15:41:52Z"
+  },
+  {
+    "distance": 8004.2,
+    "name": "8k reggelire",
+    "id": "14181752908",
+    "start_date": "2025-04-15T05:45:41Z"
+  },
+  {
+    "distance": 17790.9,
+    "name": "Napi 2. belezés ➡️ Threshold/Supra-Threshold Intervals(12x800)",
+    "id": "14204670263",
+    "start_date": "2025-04-17T13:27:08Z"
+  },
+  {
+    "distance": 8097,
+    "name": "Nagypéntek, kisfutás reggelire, a Tempus utolsó méterei",
+    "id": "14209699388",
+    "start_date": "2025-04-18T04:58:47Z"
+  },
+  {
+    "distance": 7725.3,
+    "name": "Racse szpecifikus esős ráfutás",
+    "id": "14273649602",
+    "start_date": "2025-04-24T15:11:52Z"
+  }
+]

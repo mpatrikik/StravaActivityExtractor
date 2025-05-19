@@ -18,10 +18,8 @@ public class StravaShoeFilter {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         JSONArray savedActivities = loadActivitiesFromFile();
-        long lastSavedTimestamp = getLastSavedTimestamp(savedActivities);
-        System.out.println("Using 'after' timestamp: " + lastSavedTimestamp + "( " + Instant.ofEpochSecond(lastSavedTimestamp) + " )");
 
-        JSONArray newActivities = getNewStravaActivities(lastSavedTimestamp);
+        JSONArray newActivities = getNewStravaActivities();
 
         System.out.println("Fetched new activities... " + newActivities.length());
 
@@ -33,6 +31,7 @@ public class StravaShoeFilter {
             String startDate = activity.getString("start_date");
             System.out.println("Received activity with start_date: " + startDate);
             String activityId = activity.get("id").toString();
+            System.out.println("Activity ID: " + activityId + ", Gear ID: " + activity.optString("gear_id", "N/A"));
             if (!existingIds.contains(activityId) && activity.has("gear_id") && !activity.isNull("gear_id")) {
                 String gearId = activity.getString("gear_id");
                 if (gearId.equalsIgnoreCase(GEAR_ID)) {
@@ -78,6 +77,9 @@ public class StravaShoeFilter {
         for (int i = 0; i < activities.length(); i++) {
             String date = activities.getJSONObject(i).getString("start_date");
             timestamps.add(ISO8601ToUnix(date));
+            long ts = ISO8601ToUnix(date);
+            System.out.println("Saved activity timestamp: " + ts + " (" + date + ")");
+            timestamps.add(ts);
         }
         return Collections.max(timestamps);
     }
@@ -93,16 +95,11 @@ public class StravaShoeFilter {
         return ids;
     }
 
-    private static JSONArray getNewStravaActivities(long afterTimestamp) throws IOException, InterruptedException {
+    private static JSONArray getNewStravaActivities() throws IOException, InterruptedException {
         int page = 1;
         JSONArray allActivities = new JSONArray();
         while (true) {
-            String urlString;
-            if (afterTimestamp > 0) {
-                urlString = STRAVA_API_URL + "?after=" + afterTimestamp + "&page=" + page + "&per_page=" + MAX_ACTIVITIES;
-            } else {
-                urlString = STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES;
-            }
+            String urlString = STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES;
             URL url = new URL(urlString);
             System.out.println("Fetching activities from URL: " + url);
 
@@ -113,7 +110,7 @@ public class StravaShoeFilter {
 
             if (conn.getResponseCode() == 429) {
                 int retryAfter = conn.getHeaderFieldInt("Retry-After", 900);
-                System.out.println("\nAPI limit exceeded. Waiting" + retryAfter + "...");
+                System.out.println("\nAPI limit exceeded. Waiting " + retryAfter + " seconds...");
                 Thread.sleep(retryAfter * 1000L);
                 continue;
             }
@@ -146,6 +143,7 @@ public class StravaShoeFilter {
                 e.printStackTrace();
                 break;
             }
+
             if (activities.length() == 0) {
                 break;
             }
@@ -158,6 +156,7 @@ public class StravaShoeFilter {
         return allActivities;
     }
 
+
     private static void saveActivitiesToFile(JSONArray newActivities) {
         JSONArray existingActivities = loadActivitiesFromFile();
         Set<String> existingIds = new HashSet<>();
@@ -166,18 +165,30 @@ public class StravaShoeFilter {
             existingIds.add(existingActivities.getJSONObject(i).get("id").toString());
         }
 
+        JSONArray merged = new JSONArray();
+
+        int added = 0;
         for (int i = newActivities.length() - 1; i >= 0; i--) {
             JSONObject activity = newActivities.getJSONObject(i);
-            if (!existingIds.contains(activity.get("id").toString())) {
-                existingActivities.put(0, activity);
+            String id = activity.get("id").toString();
+            System.out.println("Checking activity ID before save: " + activity.get("id") + ", is duplicate: " + existingIds.contains(activity.get("id").toString()));
+            if (!existingIds.contains(id)) {
+                merged.put(activity);
+                added++;
             }
         }
 
+        for(int i = 0; i < existingActivities.length(); i++) {
+            merged.put(existingActivities.getJSONObject(i));
+        }
+
         try (FileWriter file = new FileWriter(JSON_FILE)) {
-            file.write(existingActivities.toString(2));
+            file.write(merged.toString(2));
+            System.out.println("✅ File written with " + merged.length() + " total activities. (" + added + " new)");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     private static long ISO8601ToUnix(String date) {
