@@ -10,7 +10,7 @@ import org.json.*;
 
 
 public class StravaShoeFilter {
-    private static final String ACCESS_TOKEN = "743872699e2d3caa090c34085e61cfff66de9e08"; //it needs to be used from postman
+    private static final String ACCESS_TOKEN = "d59be6e4d3220a37995b04b11f3e97095f75f7c3"; //it needs to be used from postman
     private static final String STRAVA_API_URL = "https://www.strava.com/api/v3/athlete/activities";
     private static final String GEAR_ID = "g16810693"; //This is the gear ID for the Saucony Tempus training shoes 6.0
     private static final String JSON_FILE = "src/main/resources/activities.json";
@@ -19,6 +19,8 @@ public class StravaShoeFilter {
     public static void main(String[] args) throws IOException, InterruptedException {
         JSONArray savedActivities = loadActivitiesFromFile();
         long lastSavedTimestamp = getLastSavedTimestamp(savedActivities);
+        System.out.println("Using 'after' timestamp: " + lastSavedTimestamp + "( " + Instant.ofEpochSecond(lastSavedTimestamp) + " )");
+
         JSONArray newActivities = getNewStravaActivities(lastSavedTimestamp);
 
         System.out.println("Fetched new activities... " + newActivities.length());
@@ -28,6 +30,8 @@ public class StravaShoeFilter {
 
         for (int i = 0; i < newActivities.length(); i++) {
             JSONObject activity = newActivities.getJSONObject(i);
+            String startDate = activity.getString("start_date");
+            System.out.println("Received activity with start_date: " + startDate);
             String activityId = activity.get("id").toString();
             if (!existingIds.contains(activityId) && activity.has("gear_id") && !activity.isNull("gear_id")) {
                 String gearId = activity.getString("gear_id");
@@ -93,9 +97,11 @@ public class StravaShoeFilter {
         int page = 1;
         JSONArray allActivities = new JSONArray();
         while (true) {
-            String urlString = STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES;
+            String urlString;
             if (afterTimestamp > 0) {
-                urlString += "&after=" + afterTimestamp;
+                urlString = STRAVA_API_URL + "?after=" + afterTimestamp + "&page=" + page + "&per_page=" + MAX_ACTIVITIES;
+            } else {
+                urlString = STRAVA_API_URL + "?page=" + page + "&per_page=" + MAX_ACTIVITIES;
             }
             URL url = new URL(urlString);
             System.out.println("Fetching activities from URL: " + url);
